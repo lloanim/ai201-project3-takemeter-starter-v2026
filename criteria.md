@@ -51,62 +51,42 @@ whether you hit them:
 
 ---
 
-## 1.
-
-<!-- Your criterion. It must name a number. -->
-
-
+## 1. The held out accuracy is at least 0.60 on every one of the three seeds
 
 **Why this target:**
-
+There is a hard case between the lables `argued` and `hot_take` where its determined if its one over the other through the reason of "having concrete explaination" and its a point the model may miss. I set it at 0.60 because the test split is of 30 posts, so the score can shift several points between the three seeds and the target has to hold on all of them.
 
 
 ---
 
-## 2.
+## 2. `argued` and `hot_take` each have an F1 of at least 0.50 on all three seeds
 
-<!-- Your criterion. -->
+**Why this target:**
+These two labels are the hardest case where I mention in my rule that naming a game or listing examples does not count as support, but the model could use the listing of games as `argued`. I set the bar lower than others because I think its a distinction it could take longer to learn.
 
+---
+
+## 3. `question` has an F1 of at least 0.75 on all three seeds
 
 
 **Why this target:**
-
+It is easier to determine the format of a question with key words of "can I", "should I", etc. It also has a punctuation of "?" that allows the model determine the post as question. 
 
 
 ---
 
-## 3.
-
-<!-- Your criterion. -->
-
+## 4. Every label makes up at least 15% (30 posts) and at most 40% (80 posts) of my 200 labelled posts
 
 
 **Why this target:**
-
-
+I set 30 posts as minimum because the test split is 15% so a label with 30 posts gets only about 5 test posts, which is barely enough for the F1 score to mean something. Over 80 posts would make the model over predict that label. 
 
 ---
 
-## 4.
-
-<!-- Your criterion. -->
-
-
+## 5. Predictions with confidence of 0.70 or higher are right at least 10 points more often than predictions below 0.70 on every seed
 
 **Why this target:**
-
-
-
----
-
-## 5.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
+Both `reaction` and `argued` include personal experience but the difference is if that experience is used as a reason for a claim. I expect the model to be unsure on posts like that, so its confidence should drop there. I choose 10 point difference because with about 30 test posts, one or two posts can swing a group's accuracy by 5-10 points, so a smaller gap would not tell me much.  
 
 
 ---
