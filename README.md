@@ -54,33 +54,56 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `argued`
 
 **Definition:**
+Makes a claim about a game or industry topic and backs it with at least one concrete reason: specific gameplay details, comparisons, stats, sources, or personal experience explained in enough detail to show why.
 
 **Example 1:**
->
+> I'm genuinely surprised Rewindead isn't getting more attention. It is a brilliant concept. I don't normally post but I feel compelled since the concept of this game is genuinely quite cool. It's like a speed runners dream. (The fella at the top of the leader board posts all his stuff online and it freaks me out how it is even possible) Lad you're a hitman who is looping in time. You start by killing a VIP, which sends you back in time. Now you need to take out yourself and the VIP. This repeats until you've finished every loop on the level. It's pretty simple at first, but the more loop they add, the wilder it gets. It's basically a puzzle shooter game at the end of the day.There is a whole ranking system, which forces you to actually play fast. It's pretty sneaky on how it baits you into optimising everything. You start thinking...."NO I can't settle for a C! I am beyond a mere C! I will become number 1" but the faster you play, the harder the game gets (The past versions of you turn into a bit of a menace) I spent way too long trying to find the perfect run, just to find out some guy online to show me something I couldn't even imagine. TLDR: Gud Gam, Fun Gam, Try Demo
 
 **Example 2:**
->
+> Genuinely bad or mediocre games don't tend to get the kind of massive overhaul mods that transform them into a suddenly amazing game. However, there are a ton of games that either aged horribly, or we're just down right unplayable on Modern Hardware that got mods that ranged from making them playable to completely overhauling them. One of the first examples that come to mind is Daggerfall, that game may have been revolutionary when it came out but it did not age very well and it's barely playable on Modern hardware, but the unity mod completely changed that while adding a bunch of modern qol. There's still one guy working on an Ultima 7 Unity port
 
-### `label_two`
+### `hot_take`
 
 **Definition:**
+States a confident opinion or verdit with no reason given, or only a vague one. Naming specific games does not count as support. 
 
 **Example 1:**
->
+> Graveyard Keeper is honestly a really solid game with funny writing and some decent expansions. They just announced a sequel with a free demo as well.
 
 **Example 2:**
->
+> Kind of incredible that Sony can get away with their awful refund policy. Even Microsoft’s is better
+
+### `reaction`
+
+**Definition:**
+Expresses an emotion or personal feeling without making a claim others could agree or disagree with.
+
+**Example 1:**
+> I'm the same way. And I'm honestly not sure why. Something about Minecraft doesn't appeal to me even though I love building crafting and survival games. I adore Vintage Story. And I really love some of the more robust mod packs. Legendary, Fear Nightfall, and DawnCraft are super fun to me
+
+**Example 2:**
+> I am a big fan of game soundtracks. My all time favorite has got to be from Arcanum of Steamworks and Magick Obscura followed by Zeliard and Homeworld. Honorable mention goes to Xenon II by the Bitmap Brothers.
+
+### `question`
+
+**Definition:**
+Primary purpose is to ask for information, help, opinions, or recommendations. Rhetorical questions that really make a point are labeled by the point instead.
+
+**Example 1:**
+> Can I play old COD games on PC with a PS5 controller (or any controller)? Hey so, admittedly, I’m not very tech savvy and don’t know whether or not this will work. But I’ve been wanting to play the older COD games on PC for some time now. By older COD games, I’m talking about those in the WW2 era, including World at War and others before it. Can I play those on PC with a PS5 controller? Or am I stuck with mouse and keyboard?
+
+**Example 2:**
+> I just bought a seagate HHD game drive for Xbox and I’m having regrets. I have an Xbox series s 500gb and was trying to expand the storage with hopes of being able to handle the 300gb+ that the new fable game will take up but the seagate game drive won’t let you play series s games from the drive. It’s not properly advertised and they sell it with a 1 month game pass. I don’t know if this is actually a good way to use the system. The price between a 2tb HDD for $139 to an inserted drive at 199 for 1tb I don’t know if I should return the game drive and I’m looking for suggestions.
 
 ### The hardest boundary
 
 **Which two labels:**
-
+`argued` and `hot_take`
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+If the post makes a claim and explains why using a specific gameplay detail, comparison, source, or sufficiently explained personal experience, its `argued`, even if the tone is heated or the opinion is controversial. If it gives a verdit with no supporting reason, or only vauge praise or criticism, its `hot_take`. Simply naming a game or listing examples does not count as sufficient support. 
 
 
 
