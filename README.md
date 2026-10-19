@@ -101,10 +101,11 @@ I labelled 80 posts myself and then had Claude help me label the rest. I looked 
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| argued | 54 | 27.0% |
+| hot_take | 42 | 21.0% |
+| reaction | 55 | 27.5% |
+| question | 49 | 24.5% |
+| **Total** | 200 | 100% |
 
 **Three hard cases**
 
@@ -143,24 +144,28 @@ I labelled 80 posts myself and then had Claude help me label the rest. I looked 
 
 **Base model:**
 "distilbert-base-uncased"
+
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
 - Epochs: 3
 - Learning rate: 2e-5
 - Batch size: 16
 - Seed: 42
+
 **Anything I changed from the defaults, and why:**
-I did not change the default settings
+I did not change the default settings.
+
 **Split sizes:** <!-- train / val / test, and per-label counts in the test split. If a label had fewer than about 8 in test, say so — it explains a lot of next unit's variance. -->
 train 139  ·  val 31  ·  test 30
 
-| train | val | test |
-| label| | |                    
+| label | train | val | test |
+|---|---|---|---|                
 | argued | 38 | 8 | 8 |
 | hot_take | 29 | 7 | 6 |
 | reaction | 38 | 9 | 8 |
 | question | 34 | 7 | 8 |
+| **Total** | **139** | **31** | **30** |
 
-[note] 'hot_take' has only 6 examples in the test split.
+Note: 'hot_take' has only 6 examples in the test split.
 
 
 ---
