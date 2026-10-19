@@ -1,28 +1,5 @@
 # TakeMeter
 
-> ### 👋 Start here
->
-> **New to this repo? Read [RUNNING.md](RUNNING.md) first** — setup, the
-> notebook, the baseline, and what to do when something breaks.
->
-> Once `python test.py` passes:
->
-> ```bash
-> head -5 data/practice_labels.csv     # the shape your labels.csv needs
-> ```
->
-> Then open `takemeter.ipynb` **in this folder** — in VS Code, or with
-> `jupyter notebook` if you prefer. Pick the kernel: the `.venv` inside this
-> project. Run section 1, which reports the hardware you'll be training on.
-> Everything else waits until you have data.
->
-> Nothing to upload, nothing to connect, no accounts and no keys. The notebook
-> runs on your machine and writes next to your code.
->
-> **The rest of this file is your submission.** Fill it in as you go.
-
----
-
 <!-- ─────────────────────────────────────────────────────────────────────────
      HOW TO USE THIS FILE
 
@@ -41,8 +18,7 @@
 
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
-
-
+TakeMeter classifies r/gaming posts into four categories: `argued`, `reaction`, `hot_take`, and `question`. I labeled 200 real r/gaming posts with these categories and trained a small model on them. The goal is to separate posts worth reading from noise in a way that matches how regulars judge them. 
 
 ---
 
@@ -115,9 +91,11 @@ If the post makes a claim and explains why using a specific gameplay detail, com
      cases. -->
 
 **Where the posts came from:**
+The posts come from the subreddit r/gaming
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+I labelled 80 posts myself and then had Claude help me label the rest. I looked through each to make sure it fit my label definitions.
 
 **Counts per label:**
 
@@ -135,24 +113,27 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 **1.**
 > *The post:*
->
+> Not necessarily an ""older"" game, but playing Stardew Valley without any tools requires a special kind of strategy and more thought than you'd think.
 > *Could have been:*
->
-> *I chose, because:*
+> reaction
+> *I chose hot_take, because:*
+> Although this post sounds more like a reaction to how the game could be played based on my rule for reaction it should be "an emotion or personal feeling without making a claim others could agree or disagree with". So this leans more towards hot_take because it states a claim on how the game can be played but does do vaguely so it also can't be argued. 
 
 **2.**
 > *The post:*
->
+> I’ve tried fromsoft games, not really for me. I do have a mate that loves their games so I’ll take his word for the fact if you like that style, they make the best games
 > *Could have been:*
->
-> *I chose, because:*
+> hot_take
+> *I chose reaction, because:*
+> The post initially makes a claim that the game is not great but then claims that they make the best games under the impression of their friend. The statement is vauge in explaining what make the game either great or bad. But does express an emotion that explains their choice and is not actually trying to prove their claim.
 
 **3.**
 > *The post:*
->
+> If I never encounter another pack of wild wolves in an RPG it’ll still be too soon. Seriously, can we be done with this trope? Can no one think of something a little more original?
 > *Could have been:*
->
-> *I chose, because:*
+> question
+> *I chose hot_take, because:*
+> Even though they are asking questions, their main point is to claim this gameplay is overused in this genre. It invited people to opinate differently to what they claim. It also fits my hot_take definition of "states a confident opinion". 
 
 ---
 
@@ -161,15 +142,25 @@ Say so plainly — the disclosure is required, not penalised. -->
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
 **Base model:**
-
+"distilbert-base-uncased"
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
-
+- Epochs: 3
+- Learning rate: 2e-5
+- Batch size: 16
+- Seed: 42
 **Anything I changed from the defaults, and why:**
+I did not change the default settings
+**Split sizes:** <!-- train / val / test, and per-label counts in the test split. If a label had fewer than about 8 in test, say so — it explains a lot of next unit's variance. -->
+train 139  ·  val 31  ·  test 30
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+| train | val | test |
+| label| | |                    
+| argued | 38 | 8 | 8 |
+| hot_take | 29 | 7 | 6 |
+| reaction | 38 | 9 | 8 |
+| question | 34 | 7 | 8 |
 
+[note] 'hot_take' has only 6 examples in the test split.
 
 
 ---
@@ -186,16 +177,23 @@ of next unit's variance. -->
 **Moment 1**
 
 - *What I asked for:*
+     I had writen my notes on possible labels for the gaming posts.
 - *What came back:*
+     It told me to focus more on the structure of the post rather than its content topic. 
 - *What I changed:*
+     I focused more on look through the posts on the four labels which allowed me to create definitions for each. 
 
 **Moment 2**
 
 - *What I asked for:*
+     I asked Claude to review the criteria I had originally had
 - *What came back:*
+     Gave feedback on what was good and what I had issues with giving an explaination
 - *What I changed:*
+     I changed my criteria to each have a number for what I was stating in the criteria. 
 
 **Pre-labelling disclosure:**
+I had Claude label some of the posts and while reading through them I had encountered some where I had difficulty deciding if it was right. For example a post had claimed "In Xmen on Sega genises there is a part to needed to restart a computer..." and then have a specific gameplay detail of "To solve this you literally needed to reset your console.". It was labelled by Claude to be argued but I had originally thought it was more of a reaction. I stayed with argued because it gives a claim with an explaination and not an emotion or personal feeling about the game. It is also something someone could disagree with which does not fit my reaction definition. 
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
