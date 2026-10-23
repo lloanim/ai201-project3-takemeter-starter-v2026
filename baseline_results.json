@@ -1,0 +1,190 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.3,
+    "f1_macro": 0.16366366366366364,
+    "per_label": {
+      "argued": {
+        "precision": 0.27586206896551724,
+        "recall": 1.0,
+        "f1": 0.4324324324324324,
+        "support": 8
+      },
+      "hot_take": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 6
+      },
+      "question": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 8
+      },
+      "reaction": {
+        "precision": 1.0,
+        "recall": 0.125,
+        "f1": 0.2222222222222222,
+        "support": 8
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Ryu Ga Gotoku. Not a single dud in their lining. Even their worst games are a 7/10 AT WORST. No matter the shortcomings, they're all at the very least serviceable enough to play through and say \"yeah, I had a pretty great time\". Not to mention their absolute gems such as Yakuza 0, Judgement and Yakuza 7 which stand above many games in terms of story and characters.",
+      "gold": "hot_take",
+      "predicted": "argued"
+    },
+    {
+      "text": "What video game weapon or armor is not worth the grinding you have to do to get it? You know how some games have that one item you have to grind a whole bunch of hours to try to get and once you get it it's terrible",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "I usually can\u2019t decide on a game, spend hours scrolling and starting to play for about 5 minutes and then closing the game to find another one. But then I\u2019ll get into one and play that game only for about 2 months. Then not playing it again for, say, a year.",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "Final Fantasy XI. When people say to make sure to have a wiki tab open while playing the game, they mean it",
+      "gold": "hot_take",
+      "predicted": "argued"
+    },
+    {
+      "text": "Project zomboid. If it apply, there are tv shows, radio broadcasts, notes and newspapers, it's a sandbox survival, but you get a lot of clues about the world and the infection, not to mention special places on the map that have some history, but in terms of survival they are useless.",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "The obvious answer most people will give is FromSoftware, but my personal answer is Evil Empire. I've loved everything they've put out from the Dead Cells Castelvania DLC to the Rogue Prince of Persia and the new Castlevania looks to be another banger based on early reviews.",
+      "gold": "hot_take",
+      "predicted": "argued"
+    },
+    {
+      "text": "Why do we enjoy running a shop in games so much? (I know, I know, some don't). Lately I have played The Walking Trade and enjoyed it a bunch. Other games I have enjoyed have been TCG Card Shop Simulator, Budgie's Bug Shop, Moonlighter and Mining Merchant. What do you think it is about these games, that are so compelling? (yeye, I know, not for everyone) And what are some store games that I should look into?",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Do you have unexpected happy place/cosy games that help you get out of slumps? For me its the more modern Resident Evil games ( from 7, Remakes included) and the same with Silent Hill (2R, f and Townfall). Dunno why when sometimes it makes me really tense but I also like to save and try to do things perfectly such as sneaking by and using less ammo over and over until I am happy, I know they should be stressful experiences somewhat and they can be, but whenever I hit a slump where my brain won't let me play what I want (most recently The Blood of the Dawnwalker and Control Resonant) these games help me break out of that paralysis and just lock in. Before this it used to be souls games and soulslikes but I think these games require less time investment and it allows me to go back to what I wanted to play faster once I complete a playthrough. So anyone else with unexpected/weird games or types of games they use to get out of their mental blocks and gaming slumps?",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Fantastic game, a perfect case of how marketing influences general perception. It wasn\u2019t marketed well and has a ton of haters, but it\u2019s great. Contrasted with super heavy marketed games that all the influencers think are amazing but are a mile-wide inch deep borefests. Criminal it isn\u2019t getting a sequel.",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "what happened to motion controls? I remember when they were all the rage with products like the Nintendo Wii, Xbox Kinect, and Playstation Move, and then the concept was quietly abandoned and forgotten about, as if it never existed.",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Mostly agree but special exception for the wolf packs in the Stormhill bit of Elden Ring that fly/rain down on you. Hilarious",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "Cave. It's cave, no one else has mastered a genre like they did, every single release after donpachi save for deathsmiles 2 was an absolute masterpiece. There's also a lot of variety in their work, they're all shoot em ups but they spin and iterate on the genre as far as they can, even bringing in yagawa to make insane games like pink sweets and ibara. Or Id software, they slipped up with rage and quake 4 but honestly those were fine, aside from those they made doom, doom 2,  quake, quake 2, quake 3, doom 3, doom 4, doom eternal and dark ages, all time great after all time great with several innovations that pushed FPS  games and the medium as a whole forward ",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "FF 9 had the sword that was gated by time. I forgot the time alloted and boss but it was late in the game and the time constraint was no joke.",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "I remember having a lot of fun with RE5 with a friend. I also recall it wasn't very \"resident evil-y\" but was a fun co-op action game.",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "I'm playing Xenoblade Chroinicles X and some of the songs are so unbelievably awful they become good, potentially, I'm still undecided",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "I definitely would never give Time Stranger an award for anything story related. The gameplay on the other hand\u2026 that\u2019s some good stuff.",
+      "gold": "hot_take",
+      "predicted": "argued"
+    },
+    {
+      "text": "What single player only games deserve a multiplayer? I was thinking there are some great opportunities with the decompiling efforts going on. A few that come to mind Portal 1/2, God of War, Spiderman, Star Wars Jedi series.",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Good substitute for Stardew Valley? Preferrably with good writing for the npcs. Games Ive tried are Fields of Mistria (lost my momentum when the game forced me to build a relationship with an NPC whom i do not care about. And stopped the entire questline), Moonlight Peaks (weird performance issues), Starsand Island (good gameplay loop but felt no incentive to proceed after 10 or so hours), Rune Factory 5/Azuma (just didnt like it), Harvest Moon (i dont like stealing NPCs romances), My Time Series (finished both games). And others i forget. Thanks.",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Pretty much every Ace Combat game, DOOM 2016, Final Fantasy 7, and the original Halo trilogy are all fantastic.",
+      "gold": "hot_take",
+      "predicted": "argued"
+    },
+    {
+      "text": "Any Paradox strategy game. Have a tutorial that covers like 5% of the game features and thats it. Then they update the games with DLC and never update the tutorial to include new features",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "I'm a big believer that specifically fantasy games need more enemy variety in general tbh. That being said I don't necessarily see the problem with wolves as a low level early game threat as long as there's some other variety along with it depending on the setting. It's a lot harder for a medieval game cause they're bound by things that actually existed/do exist but with fantasy games you can have a wider variety. Think Goblins, Slimes, etc.",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "Was there a classic game that had a genuinely obtuse unlock or secret. There were a lot of old videos on how to unlock secrets in games. Like in smash bros brawl, unlocking master hand needed you to defeat 50 enemies in cruel melee. Then press 2 on the wii remote to unlock a secret character slot. Obviously we know these are fake, but I don't know how legitimate they sounded at the time. I get people were young that generation (myself included) But these seem so absurd that somebody had to figure out they were fake. But I'm wondering if any of these overly descriptive \"secrets\" were actually real. Like how you can unlock rosalina in mario kart wii for having galaxy.",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Halo 4. I was hoping they'd be able to continue the high that was everything that preceded it. And it wasn't great. I finished the campaign and never played it again. I bought Halo 5 on sale for the holidays, and never bought Halo: Infinite.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Final Fantasy XI. The game feels like not wanting you to play with how vague the objectives are especially with how huge the world is & how many NPCs there are. It is the pinnacle of getting lost in video games",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "Spore, those first few hours of swimming around and evolving to tribes and even cities was fun. As soon as it went to future and spaceships I lost all interest.",
+      "gold": "argued",
+      "predicted": "argued"
+    },
+    {
+      "text": "If you haven't played Red Dead Redemption 2 add that on to the list. Easily one of the best games i have ever played.",
+      "gold": "hot_take",
+      "predicted": "argued"
+    },
+    {
+      "text": "I hyperfocus on a game until I'm 90-95% of the way through and then never finish it",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "I remember Tycho's post at Penny-Arcade when God of War 2 came out, he referred to the opening where Kratos gets metroided out of his powers after the prologue and boy has the stuck for me as a verb.",
+      "gold": "reaction",
+      "predicted": "argued"
+    },
+    {
+      "text": "Please help me identify this game. I remember watching a trailer of an open world fantasy game within the last year-ish, and you played as a cat-person, you could do magic, and you were part of a clan. There were three clans, one specialized in magic and another in stealth, iirc. And you had to protect your clan from Bad Things. I remember that when it was first released it was pretty buggy, so I wanted to wait. Then I completely forgot about it until now. Search engines just give me articles on Stray. Great game, not what I'm looking for. Thanks for any help!",
+      "gold": "question",
+      "predicted": "argued"
+    },
+    {
+      "text": "Remember when games had separate console ports instead of studios bottlenecking their games with multiplatform launches? It's not that I don't want console gamers to have fun or anything, but when a game observably suffers due to being launched on current gen consoles, that's where I draw the line. Arma 4 and TWWH40K are 2 examples I'm personally upset about. Is this going to become standard from now on? Just make a sequel to a beloved PC franchise and prevent it from reaching its true potential by releasing it on console?",
+      "gold": "argued",
+      "predicted": "argued"
+    }
+  ]
+}

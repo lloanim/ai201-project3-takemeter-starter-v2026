@@ -44,7 +44,7 @@ Makes a claim about a game or industry topic and backs it with at least one conc
 ### `hot_take`
 
 **Definition:**
-States a confident opinion or verdit with no reason given, or only a vague one. Naming specific games does not count as support. 
+States a confident opinion or verdict with no reason given, or only a vague one. Naming specific games does not count as support. 
 
 **Example 1:**
 > Graveyard Keeper is honestly a really solid game with funny writing and some decent expansions. They just announced a sequel with a free demo as well.
@@ -214,19 +214,24 @@ I had Claude label some of the posts and while reading through them I had encoun
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.300 | 0.500 | +0.200 |
+| Macro F1 | 0.164 | 0.393 | +0.229 |
+| F1 — `argued` | 0.432 | 0.571 | +0.139 |
+| F1 — `hot_take` | 0.000 | 0.000 | +0.000 |
+| F1 — `question` | 0.000 | 0.333 | +0.333 |
+| F1 — `reaction` | 0.222 | 0.667 | +0.444 |
+
+`note`: ran with definitions
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+I predict that my model will be able to distinguish `argued` posts from `hot_take` because it can learn to reconize when a post provides concrete reason from specific evidence or reasoning to support an opinion rather than simply expressing a strong opinion.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
-
+Compared to the baseline with definitions, training improved overall accuracy by +0.20 and macro F1 by +0.229, which suggests the model learned something from my labeled examples. The biggest gains were `reaction` (+0.444), `question` (+0.333), and `agrued` (+0.139). `hot_take` did not improve and stayed at 0.0 for both models, so neither one predicted it correctly. My prediction that the model would separate `argured` from `hot_take` did not hold up. This may be because the line between the two is hard to judge. However, when I ran the baseline with bare label names, it scored 0.600 accuracy and 0.537 macro F1, so it did better than both the definitions baseline and my trained model. So my definitions actually hurt the zero-shot model, possibly because of how long they are and the negations in the definition. 
 
 
 ---
