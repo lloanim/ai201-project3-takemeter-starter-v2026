@@ -254,18 +254,22 @@ Compared to the baseline with definitions, training improved overall accuracy by
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted | argued | hot_take | reaction | question |
+|---|---|---|---|---|
+| **argued** | 6 | 0 | 1 | 1 |
+| **hot_take** | 2 | 0 | 4 | 0 |
+| **reaction** | 0 | 0 | 7 | 1 |
+| **question** | 5 | 0 | 1 | 2 |
+
+Biggest confusion: 5 real `question` posts called `argued`.
+The other direction: 1 real `argued` posts called `question`.
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
 
-
+5 real `question` posts were called `argued` and only 1 went the other way. This means that the model did not learn the boundary between `question` and `argued`. 
 
 ---
 
