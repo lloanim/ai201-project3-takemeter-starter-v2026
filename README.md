@@ -309,7 +309,7 @@ The other direction: 1 real `argued` posts called `question`.
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** __30_ / 30 = _100%__
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -350,7 +350,10 @@ The other direction: 1 real `argued` posts called `question`.
 > *Which pile:*
 
 **What the pattern in my disagreements tells me:**
+None. I matched the staff label on all 30 posts, so there was nothing to sort into (a) consistency problems, (b) gaps or (c) defensible readings.
 
+**Easy set or tight rule?**
+I think it the set was easy to label because after reading a couple of the posts I understood the difference between the analysis and hot_take definitions. The reaction posts had a certain format that fit the definition and allowed me to label it as reaction. 
 
 
 ---
