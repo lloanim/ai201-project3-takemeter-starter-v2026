@@ -243,11 +243,13 @@ Compared to the baseline with definitions, training improved overall accuracy by
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.60 | 0.50 | 0.27 | 0.63 | MISSED |
+| 2. `argued` / `hot_take` F1  | each ≥ 0.50 | 0.57 / 0.00 | 0.43 / 0.00 | 0.82 / 0.00 | MISSED |
+| 3. `question` F1 | ≥ 0.75 | 0.33 | 0.00 | 0.67 | MISSED |
+| 4. Label balance (share of 200 posts) | every label 15-40% | 21-27.5% | 21-27.5% | 21-27.5% | MET |
+| 5. Confidence ≥0.70 right ≥10pts more often | gap ≥10pts | +20 pts | +60 pts | +10 pts | MISSED (not measurable as written) |
+
+`Note`: The notebook reports accuracy by confidence third, not at a 0.70 cutoff. Mean confidence was ~0.28, so almost no predictions reached 0.70. I used the top-third vs. bottom-third gap instead. It clears 10 points on every seed, but seed 2024 is exactly at the line and each third is only 10 posts, so this is weak evidence that confidence is meaningful. 
 
 ### Confusion matrix
 
@@ -280,11 +282,11 @@ The other direction: 1 real `argued` posts called `question`.
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | The held out accuracy is at least 0.60 on every on of the three seeds | ≥ 0.60 | MISSED | Seed 42 and 7 scored below 0.60 |
+| 2 | `argued` and `hot_take` each have an F1 of at least 0.50 on all three seeds | each ≥ 0.50 | MISSED | `hot_take` had an F1 of 0.00 on all three seeds, and `argued` fell below 0.50 on seedd 7 (0.43) |
+| 3 | `question` has an F1 of at least 0.75 on all three seeds | ≥ 0.75 | MISSED | Across all three seeds the F1 of `question` was below 0.75 |
+| 4 | Every label makes up at least 15% (30 posts) and at most 40% (80 posts) of my 200 labelled posts | every label 15-40% | MET | All four labels are between 30 to 80 posts |
+| 5 | Predictions with confidence of 0.70 or higher are right at least 10 points more often than predicitons below 0.70 on every seed | gap ≥10pts | MISSED | Average confidence was only about 0.27-0.29 on every seed, so no predictions reach 0.70 and the comparison couldn't be made as written.  |
 
 **Diagnoses**
 
@@ -297,7 +299,22 @@ The other direction: 1 real `argued` posts called `question`.
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
+Criterion 1 (accuracy): 
+**Cause: a task the model can't reach from this much data, not a labelling problem**
+My agreement report shows 30/30 agreement with the staff labels, so I applied the labelling rules consistently. I did mention that I found the staff labelling easy but it does not rule out inconsistency in my own 200 labels, especially on `argued` vs `hot_take` borderline posts. The model is barely confident in anything, average confidence was ~0.28, close to random guessing over 4 labels (0.25). Accuracy also swung from 0.27 (seed 7) to 0.63 (seed 2024) just by changing the seed, which shows that ~160 training posts are not enough to learn stable boundaries. The bare label baseline (0.60) beat my trained model, which also points to too little training data rather than bad label.
 
+
+Criterion 2 (`argued` / `hot_take`):
+**Cause: a genuinely hard label pair plus too few examples, not inconsistent labelling**
+`hot_take` is my smallest label pair (42 of 200 posts, only 6 in the test set), and the model never predicted it once on any seed. In the confusion matrix, the 6 real `hot_take` posts went to `reaction` (4) and `argued` (2). Even through I was able to label the staff posts correctly this may be because the of the model, where it finds it hard to differentiate a strong opinion without reasons from an emotional reaction or arguement. The labels differ by whether reasons are given, which is subtle for a small model with few examples.
+
+Criterion 3 (`question`):
+**Cause: a hard boundary between `question` and `argued`**
+5 of the 8 real `question` posts were predicted as `argued`, but only 1 `argued` post went the other way. Many of my question posts include background or an opinion before asking, and those explanation sentences look like the reasoning in `argued` posts. This suggests that the confusion comes from the model focusing on the explanation instead of the question being asked. 
+
+Criterion 5 (confidence):
+**Cause: the criterion couldn't be measured as written, and the model is uncertain overall**
+The notebook reports accuracy by confidence thrid, no at a 0.70 cut-off. With average confidence of ~0.28, almost no predictions reach 0.70. The top vs bottom thrid gap (+20, +60, +10 points) suggests confidence means something, but with 10 posts per thrid tells this is weak evidence. This is a measurement/model issue, not a labelling one.  
 
 ---
 
