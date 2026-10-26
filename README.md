@@ -197,6 +197,17 @@ Note: 'hot_take' has only 6 examples in the test split.
 - *What I changed:*
      I changed my criteria to each have a number for what I was stating in the criteria. 
 
+**Moment 3**
+
+- *What I asked for:*
+     After adding 30 `hot_take` posts made overall accuracy drop, I asked Claude to check my explanation. I had thought the drop meant my new `hot_take` labels were inconsistent.
+
+- *What came back:*
+     It said labelling probably wasn't the main cause. It pointed out that `hot_take` had become the largest label (72 of 230), that on seed 42 the model predicted `hot_take` for 34 of 35 test posts, and that 3 epochs over ~160 posts is only about 30 updates. Together, that suggests the model was falling back on the most common label instead of learning the boundaries.
+
+- *What I changed:*
+     I didn't accept that explanation without checking it against my own results. The seed 42 confusion matrix did show almost every post predicted as `hot_take`, and mean confidence stayed around 0.30 whether the model was right or wrong. It helped me give a more detailed explanation for the `Did it help` section.
+
 **Pre-labelling disclosure:**
 I had Claude label some of the posts and while reading through them I had encountered some where I had difficulty deciding if it was right. For example a post had claimed "In Xmen on Sega genises there is a part to needed to restart a computer..." and then have a specific gameplay detail of "To solve this you literally needed to reset your console.". It was labelled by Claude to be argued but I had originally thought it was more of a reaction. I stayed with argued because it gives a claim with an explaination and not an emotion or personal feeling about the game. It is also something someone could disagree with which does not fit my reaction definition. 
 
@@ -378,24 +389,30 @@ I think it the set was easy to label because after reading a couple of the posts
 ## The Improvement
 
 **What I changed:**
+I added 30 more posts to my thinnest label `hot_take`
 
 **Which diagnosis pointed at it:**
+The criterion 2 diagnosis. `hot_take` was my smallest label (42 of 200 posts, only 6 in the test set) and the model never predicted it on any seed, so its F1 was 0.00 every time. Since I matched the staff on all 30 posts in the agreement report, the problem looked like too few examples rather than inconsistent labelling. Adding 30 more `hot_take` posts (42 to 72) tested that directly. If the label was just under represented, more examples should let the model learn it.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.60 | 0.31 | 0.43 | 0.49 | MISSED |
+| 2. `argued` / `hot_take` F1 | each ≥ 0.50 | 0.00 / 0.49 | 0.36 / 0.54 | 0.44 / 0.65 | MISSED |
+| 3. `question` F1 | ≥ 0.75 | 0.00 | 0.40 | 0.22 | MISSED |
+| 4. Label balance (share of 230 posts) | every label 15-40% | 21.3-31.3% | 21.3-31.3% | 21.3-31.3% | MET |
+| 5. Confidence ≥0.70 right ≥10pts more often | gap ≥10pts | +45 pts | +27 pts | +45 pts | MISSED (not measurable as written) |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
+Only partly. `hot_take` F1 went from 0.00 on every seed to 0.49 / 0.54 / 0.65, so the model can now predict the label it never predicted before. But overall it got worse with the mean accuracy dropping from 0.47 to 0.41, and on seed 42 the model predicted `hot_take` for 34 of 35 test posts, giving `argued`, `reaction` and `question` an F1 of 0.00.
 
+That points to the model defaulting to the most common label instead of learning the boundaries between labels. After my change, `hot_take` became the largest label (72 of 230, 31%). The confidence numbers back this up with mean confidence of about 0.30 whether the model is right or wrong, barely above the 0.25 a random guess across four labels would get. So the model is still close to guessing.
+
+My conclusion is that too few `hot_take` examples was not the main problem. The bigger issue is likely too little training: 3 epochs over about 160 training posts is only 30 updates, not enough for the model to learn from the examples, so it falls back on whichever label is most common. Adding more of one label made that worse by tipping the balance toward `hot_take`. A better next step would be training for more epochs while keeping the labels balanced.
 
 
 ---
@@ -403,13 +420,18 @@ I think it the set was easy to label because after reading a couple of the posts
 ## What's Still Broken
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
+**Criterion 1 (accuracy ≥ 0.60):** still missed on all three seeds (0.31 / 0.43 / 0.49). I would train for more epochs, since 30 updates is not enough for the model to learn from the examples. I stopped because the assignment allows one improvement, and I used it on adding `hot_take` posts.
+
+**Criterion 2 (`argued` / `hot_take` F1 ≥ 0.50):** `hot_take` now meets the target on two seeds, but `argued` is still below it on all three (0.00 / 0.36 / 0.44). I would rebalance the labels by adding `argued`, `reaction` and `question` posts so `hot_take` is no longer the largest label, then retrain for longer. I stopped because finding more real `hot_take` posts was already hard, and another round of labelling plus retraining was beyond this unit's scope.
+
+**Criterion 3 (`question` F1 ≥ 0.75):** got worse (0.00 / 0.40 / 0.22). Before my change, most `question` posts were confused with `argued` because of the background sentences before the question. Now they are mostly pulled into `hot_take`. I would fix the training length first, then check whether the `question`/`argued` confusion comes back. I stopped for the same reason as criterion 1.
+
+**Criterion 5 (confidence):** still not measurable as written, because no prediction reaches 0.70 confidence (the mean is about 0.30). I would rewrite the criterion to compare the most and least confident thirds, which is how I measured it in both run logs, and retrain longer so the model becomes confident at all. I stopped because changing a criterion after seeing the results would be moving the goalposts.
 
 
-
-**The gap between what I meant my labels to capture and what the model
-learned:**
+**The gap between what I meant my labels to capture and what the model learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
-
+I meant `hot_take` to capture a confident opinion given without a real reason, as opposed to `argued` posts that back the claim up or `reaction` posts that only express a feeling. Instead, the model learned that `hot_take` is the safest guess. On seed 42 the confusion matrix shows 34 of 35 test posts predicted as `hot_take`, including 7 of 8 `argued`, all 8 `reaction` and all 8 `question` posts, so it learned the label's frequency, not its meaning.
 
 
 <!-- ═════════════════════════════════════════════════════════════════════
